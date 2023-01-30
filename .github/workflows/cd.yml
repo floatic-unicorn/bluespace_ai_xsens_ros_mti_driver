@@ -63,4 +63,5 @@ jobs:
       
       - name: Upload to S3
         run: |
-          aws s3 cp $(ls flody_ws/etc/debian_results/*.deb) s3://robotics-workflow-archive/bluespace_ai_xsens_ros_mti_driver/
+          ls flody_ws/etc/debian_results/
+          aws s3 cp flody_ws/etc/debian_results s3://robotics-workflow-archive/bluespace_ai_xsens_ros_mti_driver --include "*.deb" --recursive
