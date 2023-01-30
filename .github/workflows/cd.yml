@@ -49,6 +49,7 @@ jobs:
         run: |
           source /opt/floatic/debian/humble/setup.bash
           cd flody_ws/etc
+          pushd src/bluespace_ai_xsens_ros_mti_driver/lib/xspublic && make && popd
           floom-generate rosdebian
           ls debian_results/*.deb
         shell: bash
