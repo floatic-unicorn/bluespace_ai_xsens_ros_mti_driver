@@ -2,7 +2,7 @@ name: CD
 on: 
   pull_request:
     branches: [ ros2_0_foxy ]
-    
+
 jobs:
   ecr_setting:
     # if: contains(github.event.comment.html_url, '/pull/') && contains(github.event.comment.body, '/deploy')
@@ -67,10 +67,10 @@ jobs:
           source /opt/floatic/debian/ros/humble/setup.bash
           cd flody_ws/etc
           floom-generate rosdebian
-          ls debian_results/*.deb
+          ls ../*.deb
         shell: bash
       
       - name: Upload to S3
         run: |
-          ls flody_ws/etc/debian_results/
-          aws s3 cp flody_ws/etc/debian_results s3://robotics-workflow-archive/bluespace_ai_xsens_ros_mti_driver --include "*.deb" --recursive
+          ls flody_ws/
+          aws s3 cp flody_ws s3://robotics-workflow-archive/bluespace_ai_xsens_ros_mti_driver --include "*.deb" --recursive
