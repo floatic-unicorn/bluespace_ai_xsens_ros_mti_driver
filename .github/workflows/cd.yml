@@ -1,9 +1,8 @@
 name: CD
-on:
-  push:
-    tags:
-      - v*
-
+on: 
+  pull_request:
+    branches: [ ros2_0_foxy ]
+    
 jobs:
   ecr_setting:
     # if: contains(github.event.comment.html_url, '/pull/') && contains(github.event.comment.body, '/deploy')
